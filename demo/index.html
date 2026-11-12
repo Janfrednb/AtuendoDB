@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AtuendoDB · Módulo de sugerencias</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header class="header">
+      <div>
+        <h1 class="header__title">Mi armario, mis outfits</h1>
+        <p class="header__subtitle">
+          Prototipo del módulo de sugerencias de AtuendoDB. Usa los mismos datos de prueba de las 5 colecciones en MongoDB.
+        </p>
+      </div>
+      <div class="user-switch" id="users" role="group" aria-label="Elegir usuario"></div>
+    </header>
+
+    <main class="layout">
+
+      <!-- Closet del usuario -->
+      <section class="card" aria-labelledby="title-closet">
+        <h2 class="card__title" id="title-closet">Closet del usuario</h2>
+        <p class="card__hint">Colección closet_usuario</p>
+        <div class="rail" aria-hidden="true"></div>
+        <div class="hangers" id="closet"></div>
+        <div class="log" id="log" role="status"></div>
+        <details class="query">
+          <summary>Ver consulta en mongosh</summary>
+          <pre id="query-closet"></pre>
+        </details>
+      </section>
+
+      <!-- Outfits y faltantes -->
+      <section class="card" aria-labelledby="title-outfits">
+        <h2 class="card__title" id="title-outfits">Outfits que puede armar</h2>
+        <p class="card__hint">Colección coincidencia_outfit. Elige un outfit para ver qué le falta.</p>
+        <div class="outfits" id="outfits"></div>
+        <div class="detail" id="detail"></div>
+        <details class="query">
+          <summary>Ver consultas en mongosh</summary>
+          <pre id="query-outfits"></pre>
+        </details>
+      </section>
+
+      <!-- Historial -->
+      <section class="card layout__full" aria-labelledby="title-history">
+        <h2 class="card__title" id="title-history">Historial de sugerencias</h2>
+        <p class="card__hint">Colección historial_sugerencias. Sirve para no repetirle el mismo outfit.</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr><th>Outfit</th><th>Fecha</th><th>Respuesta</th></tr>
+            </thead>
+            <tbody id="history"></tbody>
+          </table>
+        </div>
+        <details class="query">
+          <summary>Ver consulta en mongosh</summary>
+          <pre id="query-history"></pre>
+        </details>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <span>Las prendas y outfits se muestran por su id porque sus nombres están en las colecciones de otros equipos.</span>
+      <button class="btn btn--ghost" id="reset">Restablecer datos</button>
+    </footer>
+
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
